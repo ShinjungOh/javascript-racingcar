@@ -5,8 +5,8 @@ class RacingGame {
     const cars = await InputView.readLineCarNames();
     console.log(cars);
 
-    // const count = await InputView.readLineCount();
-    // console.log(count);
+    const count = await InputView.readLineCount();
+    console.log(count);
   }
 }
 

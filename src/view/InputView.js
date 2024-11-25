@@ -31,8 +31,18 @@ class InputView {
   }
 
   static async readLineCount() {
-    const input = MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
-    return input;
+    const input = await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?\n');
+    const parseInput = parseInt(input, 10);
+
+    this.#validateCount(parseInput);
+
+    return parseInput;
+  }
+
+  static #validateCount(input) {
+    if (Number.isNaN(input)) {
+      throw new Error('[ERROR] 숫자만 입력 가능합니다.');
+    }
   }
 }
 
