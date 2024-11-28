@@ -1,12 +1,22 @@
 import InputView from "../view/InputView.js";
+import Race from "./Race.js";
 
 class RacingGame {
+  #scoreBoard = new Map();
+
   async play() {
     const cars = await InputView.readLineCarNames();
-    console.log(cars);
+
+    cars.forEach((car) => this.#scoreBoard.set(car, ''));
 
     const count = await InputView.readLineCount();
-    console.log(count);
+
+    const race = new Race(this.#scoreBoard, count);
+    race.racing();
+  }
+
+  static get scoreBoard() {
+    return this.#scoreBoard;
   }
 }
 

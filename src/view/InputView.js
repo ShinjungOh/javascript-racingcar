@@ -13,9 +13,7 @@ class InputView {
   static #validateCarNames(input) {
     this.#isCarNameOnlyOne(input);
 
-    input.forEach((car) => {
-      this.#validateCarNameLength(car);
-    });
+    input.forEach((car) => this.#validateCarNameLength(car));
   }
 
   static #isCarNameOnlyOne(input) {
