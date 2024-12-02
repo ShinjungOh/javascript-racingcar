@@ -12,7 +12,7 @@ class RacingGame {
     const count = await InputView.readLineCount();
 
     const race = new Race(this.#scoreBoard, count);
-    race.racing();
+    race.racingRound();
   }
 
   static get scoreBoard() {
