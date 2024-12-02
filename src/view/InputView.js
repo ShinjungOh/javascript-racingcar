@@ -38,8 +38,19 @@ class InputView {
   }
 
   static #validateCount(input) {
+    this.#isCountNotNaN(input);
+    this.#isMinimumCount(input);
+  }
+
+  static #isCountNotNaN(input) {
     if (Number.isNaN(input)) {
       throw new Error('[ERROR] 숫자만 입력 가능합니다.');
+    }
+  }
+
+  static #isMinimumCount(input) {
+    if (input <= 0) {
+      throw new Error('[ERROR] 최소 1회 이상 이동해야 합니다.');
     }
   }
 }
