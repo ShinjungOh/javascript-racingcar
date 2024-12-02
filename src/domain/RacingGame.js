@@ -15,7 +15,6 @@ class RacingGame {
     const race = new Race(this.#scoreBoard, count);
     race.racingRound();
 
-    OutputView.printRoundResult();
     OutputView.printWinner('winner');
   }
 

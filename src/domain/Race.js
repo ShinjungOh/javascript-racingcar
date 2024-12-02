@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import OutputView from "../view/OutputView.js";
 
 class Race {
   #scoreBoard;
@@ -19,13 +20,17 @@ class Race {
       if (result >= 4) {
         this.#scoreBoard.set(key, value + '-');
       }
+      OutputView.printRound(key, value);
     });
   }
 
   racingRound() {
     const result = this.range(this.#count);
-    result.forEach(() => this.#racing());
-    console.log(this.#scoreBoard.entries());
+    OutputView.printRoundResult();
+    result.forEach(() => {
+      this.#racing();
+      OutputView.printNewLine();
+    });
   }
 }
 
