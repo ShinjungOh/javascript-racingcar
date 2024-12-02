@@ -1,5 +1,6 @@
 import InputView from "../view/InputView.js";
 import Race from "./Race.js";
+import OutputView from "../view/OutputView.js";
 
 class RacingGame {
   #scoreBoard = new Map();
@@ -13,6 +14,9 @@ class RacingGame {
 
     const race = new Race(this.#scoreBoard, count);
     race.racingRound();
+
+    OutputView.printRoundResult();
+    OutputView.printWinner('winner');
   }
 
   static get scoreBoard() {
