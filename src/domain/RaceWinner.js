@@ -21,7 +21,7 @@ class RaceWinner {
       if (value.length === highScore) {
         this.#winner.push(key);
       }
-    })
+    });
 
     OutputView.printWinner(this.#winner);
   }

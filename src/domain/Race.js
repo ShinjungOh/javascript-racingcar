@@ -17,7 +17,7 @@ class Race {
       if (result >= 4) {
         this.#scoreBoard.set(key, value + '-');
       }
-      OutputView.printRound(key, value);
+      OutputView.printRound(key, this.#scoreBoard.get(key));
     });
   }
 
