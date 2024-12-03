@@ -1,4 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { MESSAGES } from "../constants/messages.js";
 
 class InputView {
   static async readLineCarNames() {
@@ -11,20 +12,20 @@ class InputView {
   }
 
   static #validateCarNames(input) {
-    this.#isCarNameOnlyOne(input);
+    this.#isCarNameOverOne(input);
 
     input.forEach((car) => this.#validateCarNameLength(car));
   }
 
-  static #isCarNameOnlyOne(input) {
+  static #isCarNameOverOne(input) {
     if (input.length === 1) {
-      throw new Error('[ERROR] 자동차 이름은 2대 이상 입력해야 합니다.');
+      throw new Error(MESSAGES.error.isCarNameOnlyOne);
     }
   }
 
   static #validateCarNameLength(input) {
     if (input.length < 1 || input.length >= 6) {
-      throw new Error('[ERROR] 자동차 이름의 길이가 잘못되었습니다.');
+      throw new Error(MESSAGES.error.carNameLengthOver);
     }
   }
 
@@ -44,13 +45,13 @@ class InputView {
 
   static #isCountNotNaN(input) {
     if (Number.isNaN(input)) {
-      throw new Error('[ERROR] 숫자만 입력 가능합니다.');
+      throw new Error(MESSAGES.error.isCountNaN);
     }
   }
 
   static #isMinimumCount(input) {
     if (input <= 0) {
-      throw new Error('[ERROR] 최소 1회 이상 이동해야 합니다.');
+      throw new Error(MESSAGES.error.isNotMinimumCount);
     }
   }
 }
