@@ -9,13 +9,7 @@ class RaceWinner {
   }
 
   finalWinner() {
-    let highScore = 0;
-
-    this.#scoreBoard.forEach((value) => {
-      if (value.length > highScore) {
-        highScore = value.length;
-      }
-    });
+    const highScore = this.#getHighScore();
 
     this.#scoreBoard.forEach((value, key) => {
       if (value.length === highScore) {
@@ -24,6 +18,18 @@ class RaceWinner {
     });
 
     OutputView.printWinner(this.#winner);
+  }
+
+  #getHighScore() {
+    let highScore = 0;
+
+    this.#scoreBoard.forEach((value) => {
+      if (value.length > highScore) {
+        highScore = value.length;
+      }
+    });
+
+    return highScore;
   }
 }
 
