@@ -1,5 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import OutputView from "../view/OutputView.js";
+import { range } from "../utils/range.js";
 
 class Race {
   #scoreBoard;
@@ -8,10 +9,6 @@ class Race {
   constructor(scoreBoard, count) {
     this.#scoreBoard = scoreBoard;
     this.#count = count;
-  }
-
-  range(count, value) {
-    return Array(count).fill(value);
   }
 
   #racing() {
@@ -25,7 +22,7 @@ class Race {
   }
 
   racingRound() {
-    const result = this.range(this.#count);
+    const result = range(this.#count);
     OutputView.printRoundResult();
     result.forEach(() => {
       this.#racing();

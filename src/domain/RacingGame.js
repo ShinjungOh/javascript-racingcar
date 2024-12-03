@@ -17,10 +17,6 @@ class RacingGame {
     const raceWinner = new RaceWinner(this.#scoreBoard);
     raceWinner.finalWinner();
   }
-
-  static get scoreBoard() {
-    return this.#scoreBoard;
-  }
 }
 
 export default RacingGame;
