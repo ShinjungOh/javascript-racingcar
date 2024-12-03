@@ -83,3 +83,27 @@ function logMapElements(value, key, map) {
 ```js
 this.#scoreBoard.set(key, value + '-');
 ```
+
+
+### 최신값 유지하기
+
+주어진 테스트에 통과하지 않아서 콘솔을 사용해 값을 출력해보았고, 문제가 된 지점을 발견   
+`Map.set()`으로 추가한 최신 결과를 이용하지 않고, 기존의 값(`value`)을 불러와서 사용했기 때문에 문제 발생
+
+유사 사례로 리액트에서도 useState를 이용하면서 비슷한 실수를 했던 것이 생각났다.   
+setState가 비동기적으로 작동해, 최신 값을 반영하지 못해 콘솔에 값이 한박자 늦게 찍혀서(기존 값을 출력해서) 디버깅에 어려움을 겪은적이 있었다.
+
+**항상 최신 상태를 유지할 것!**
+
+```js
+  #racing() {
+    this.#scoreBoard.forEach((value, key) => {
+      const result = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (result >= 4) {
+        this.#scoreBoard.set(key, value + '-');
+      }
+      OutputView.printRound(key, value); // 기존 코드 ❌   
+      OutputView.printRound(key, this.#scoreBoard.get(key)); // 수정 코드 ✅   
+    });
+  }
+```
